@@ -182,5 +182,5 @@ function switchLocationType(button) {
 
 async function sendPayload() {
     let payload = getPayloadData();
-    Telegram.WebApp.sendData(payload);
+    Telegram.WebApp.sendData(JSON.stringify(payload));
 }
