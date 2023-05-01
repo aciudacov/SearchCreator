@@ -171,7 +171,7 @@ function removeLocation(button) {
 
 function switchLocationType(button) {
     if (button.innerHTML == 'PU') {
-        button.nextElementSibling.setAttribute('data-scope', 'Dropoff');
+        button.nextElementSibling.setAttribute('data-scope', 'Delivery');
         button.innerHTML = 'DEL';
     }
     else {
