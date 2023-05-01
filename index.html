@@ -61,11 +61,14 @@
             <div id="locations">
 
             </div>
-            <hr>
-            <label for="postRange" class="form-label">Posted within <span id="postRangeText">all time</span></label>
-            <input type="range" class="form-range" id="postRange" min="0" max="24" step="1" value="0">
-            <hr>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+            
+            <div class="d-none">
+                <hr>
+                <label for="postRange" class="form-label d-none">Posted within <span id="postRangeText">all time</span></label>
+                <input type="range" class="form-range" id="postRange" min="0" max="24" step="1" value="0">
+                <hr>
+            </div>
+            <div class="accordion d-none" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -171,13 +174,15 @@
                     time</span></label>
             <input type="range" class="form-range" id="readyToShip" min="-1" max="60" step="1" value="-1">
             <hr>
-            <label for="paymentType" class="form-label">Payment type</label>
-            <select class="form-select" aria-label="Payment type dropdown" id="paymentType">
-                <option selected value="all">All</option>
-                <option value="COD_COP">COD/COP</option>
-                <option value="COD_COP_QUICKPAY_COMCHEK">COD/COP/Quickpay/Comcheck</option>
-            </select>
-            <hr>
+            <div class="d-none">
+                <label for="paymentType" class="form-label">Payment type</label>
+                <select class="form-select" aria-label="Payment type dropdown" id="paymentType">
+                    <option selected value="all">All</option>
+                    <option value="COD_COP">COD/COP</option>
+                    <option value="COD_COP_QUICKPAY_COMCHEK">COD/COP/Quickpay/Comcheck</option>
+                </select>
+                <hr>
+            </div>
             <div class="mb-3">
                 <label for="minTotal" class="form-label">Minimal total payment</label>
                 <div class="input-group">
