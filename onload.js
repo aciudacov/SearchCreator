@@ -2,8 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         let html = document.getElementsByTagName('html');
         html[0].setAttribute('data-bs-theme', 'dark');
-    }
-    else {
+    } else {
         let html = document.getElementsByTagName('html');
         html[0].setAttribute('data-bs-theme', 'light');
     }
@@ -28,15 +27,15 @@ const bsOffcanvas = new bootstrap.Offcanvas('#searchFilters');
 
 function addEventListenerToAddButton() {
     let button = document.getElementById('addLocationButton');
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function() {
         let input = document.getElementById('locationInput');
         if (input.value != '') {
-                let locationsDiv = document.getElementById('locations');
-                let cityElement = createLocation();
-                locationsDiv.appendChild(cityElement);
-                document.getElementById('milesRangeSearch').classList.add('d-none');
-                input.value = "";
-            
+            let locationsDiv = document.getElementById('locations');
+            let cityElement = createLocation();
+            locationsDiv.appendChild(cityElement);
+            document.getElementById('milesRangeSearch').classList.add('d-none');
+            input.value = "";
+
         }
     });
 }
@@ -44,14 +43,12 @@ function addEventListenerToAddButton() {
 function addEventListenerToShipWithinRange() {
     let input = document.getElementById('readyToShip');
     let text = document.getElementById('readyToShipText');
-    input.addEventListener("input", function () {
+    input.addEventListener("input", function() {
         if (input.value == -1) {
             text.innerHTML = 'any time';
-        }
-        else if (input.value == 0) {
+        } else if (input.value == 0) {
             text.innerHTML = 'today';
-        }
-        else {
+        } else {
             text.innerHTML = input.value + ' day(s)';
         }
     });
@@ -60,11 +57,10 @@ function addEventListenerToShipWithinRange() {
 function addEventListenerToPostRange() {
     let input = document.getElementById('postRange');
     let text = document.getElementById('postRangeText');
-    input.addEventListener("input", function () {
+    input.addEventListener("input", function() {
         if (input.value == 0) {
             text.innerHTML = 'all time';
-        }
-        else {
+        } else {
             text.innerHTML = input.value + ' hour(s)';
         }
     });
@@ -73,7 +69,7 @@ function addEventListenerToPostRange() {
 function addEventListenerToMilesSearchRange() {
     let input = document.getElementById('searchRange');
     let text = document.getElementById('searchRangeText');
-    input.addEventListener("input", function () {
+    input.addEventListener("input", function() {
         text.innerHTML = input.value + 'mi';
     });
 }
@@ -81,8 +77,7 @@ function addEventListenerToMilesSearchRange() {
 function getPlaceType(placeObj) {
     if (placeObj.address_components.find(a => a.types.includes('locality')) !== undefined) {
         return 'city';
-    }
-    else {
+    } else {
         return 'state';
     }
 }
@@ -97,7 +92,7 @@ function getPayloadData() {
         state: loc.getAttribute('data-state')
     }));
     let postRange = document.getElementById('postRange').value;
-    let vehicleTypes = Array.from(document.querySelectorAll('#vehicleTypesDropdown input:checked')).map(c => c.value);
+    let vehicleTypes = Array.from(document.querySelectorAll('#vehicleTypes input:checked')).map(c => c.value);
     let trailerType = document.getElementById('trailerType').value;
     let vehicleStatus = document.getElementById('vehicleStatus').value;
     let minVehicles = document.getElementById('minVehicles').value;
@@ -108,7 +103,18 @@ function getPayloadData() {
     let minPpm = document.getElementById('minPpm').value;
     let token = localStorage.getItem('token');
     return {
-        token, locations, postRange, vehicleTypes, trailerType, vehicleStatus, minVehicles, maxVehicles, readyToShip, paymentType, minTotal, minPpm
+        token,
+        locations,
+        postRange,
+        vehicleTypes,
+        trailerType,
+        vehicleStatus,
+        minVehicles,
+        maxVehicles,
+        readyToShip,
+        paymentType,
+        minTotal,
+        minPpm
     }
 }
 
