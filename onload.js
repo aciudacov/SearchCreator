@@ -187,6 +187,13 @@ function switchLocationType(button) {
 }
 
 async function sendPayload() {
+    let minVehicles = document.getElementById('minVehicles').value;
+    let maxVehicles = document.getElementById('maxVehicles').value;
+    if (minVehicles > maxVehicles)
+    {
+        alert("Min vehicles amount cannot be greater than max vehicles amount!");
+        return;
+    }
     let payload = getPayloadData();
     Telegram.WebApp.sendData(JSON.stringify(payload));
 }
