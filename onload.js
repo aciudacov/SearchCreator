@@ -89,7 +89,9 @@ function getPayloadData() {
         type: loc.getAttribute('data-type'),
         scope: loc.getAttribute('data-scope'),
         range: loc.getAttribute('data-range'),
-        state: loc.getAttribute('data-state')
+        state: loc.getAttribute('data-state'),
+        latitude: loc.getAttribute('data-latitude'),
+        longitude: loc.getAttribute('data-longitude')
     }));
     let postRange = document.getElementById('postRange').value;
     let vehicleTypes = Array.from(document.querySelectorAll('#vehicleTypes input:checked')).map(c => c.value);
@@ -135,7 +137,7 @@ function createLocation() {
     item.classList.add('input-group');
     let locationName = document.getElementById('locationInput').value;
     item.innerHTML = `<button class="btn btn-outline-secondary" type="button" onclick="switchLocationType(this)">PU</button>
-                    <input disabled type="text" class="form-control" data-name="${getNameAttr(place)}" data-id="${place.place_id}" data-type="${placeType}" data-scope="Pickup" data-range="${getRangeAttr(placeType)}" data-state="${getStateAttr(place)}" value="${locationName + (placeType == 'city' && getRangeAttr(placeType) != 0 ? `, ${getRangeAttr(placeType)}mi` : '')}">
+                    <input disabled type="text" class="form-control" data-name="${getNameAttr(place)}" data-id="${place.place_id}" data-latitude="${place.geometry.location.lat()}" data-longitude="${place.geometry.location.lng()}" data-type="${placeType}" data-scope="Pickup" data-range="${getRangeAttr(placeType)}" data-state="${getStateAttr(place)}" value="${locationName + (placeType == 'city' && getRangeAttr(placeType) != 0 ? `, ${getRangeAttr(placeType)}mi` : '')}">
                     <button class="btn btn-outline-secondary" type="button" onclick="removeLocation(this)">Remove</button>`;
     return item;
 }
