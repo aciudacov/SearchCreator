@@ -23,8 +23,6 @@ const sout = new bootstrap.Tooltip(document.getElementById('sout'));
 const soea = new bootstrap.Tooltip(document.getElementById('soea'));
 const sowe = new bootstrap.Tooltip(document.getElementById('sowe'));
 
-const bsOffcanvas = new bootstrap.Offcanvas('#searchFilters');
-
 function addEventListenerToAddButton() {
     let button = document.getElementById('addLocationButton');
     button.addEventListener("click", function() {
@@ -197,5 +195,9 @@ async function sendPayload() {
         return;
     }
     let payload = getPayloadData();
+    if (payload.locations.length == 0){
+        alert("Cannot create a search without any pickup or delivery location!");
+        return;
+    }
     Telegram.WebApp.sendData(JSON.stringify(payload));
 }
