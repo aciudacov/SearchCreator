@@ -191,11 +191,13 @@ async function sendPayload() {
     let maxVehicles = document.getElementById('maxVehicles').value;
     if (minVehicles > maxVehicles)
     {
+        Telegram.WebApp.HapticFeedback.impactOccurred('rigid');
         alert("Min vehicles amount cannot be greater than max vehicles amount!");
         return;
     }
     let payload = getPayloadData();
     if (payload.locations.length == 0){
+        Telegram.WebApp.HapticFeedback.impactOccurred('rigid');
         alert("Cannot create a search without any pickup or delivery location!");
         return;
     }
