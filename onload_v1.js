@@ -33,7 +33,7 @@ function addEventListenerToAddButton() {
             locationsDiv.appendChild(cityElement);
             document.getElementById('milesRangeSearch').classList.add('d-none');
             input.value = "";
-
+            Telegram.WebApp.HapticFeedback.impactOccurred('light');
         }
     });
 }
@@ -127,6 +127,7 @@ function createRegion(option) {
                     <button class="btn btn-outline-secondary" type="button" onclick="removeLocation(this)">Remove</button>`;
     let region = item;
     locationsDiv.appendChild(region);
+    Telegram.WebApp.HapticFeedback.impactOccurred('light');
 }
 
 function createLocation() {
@@ -173,6 +174,7 @@ function getNameAttr(loc){
 
 function removeLocation(button) {
     button.parentElement.remove();
+    Telegram.WebApp.HapticFeedback.impactOccurred('light');
 }
 
 function switchLocationType(button) {
@@ -184,6 +186,7 @@ function switchLocationType(button) {
         button.nextElementSibling.setAttribute('data-scope', 'Pickup');
         button.innerHTML = 'PU';
     }
+    Telegram.WebApp.HapticFeedback.impactOccurred('light');
 }
 
 async function sendPayload() {
