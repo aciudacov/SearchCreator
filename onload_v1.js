@@ -199,7 +199,7 @@ async function sendPayload() {
         return;
     }
     let payload = getPayloadData();
-    if (payload.locations.length == 0){
+    if (payload.locations.length == 0 && payload.trailerType != 'ENCLOSED'){
         Telegram.WebApp.HapticFeedback.notificationOccurred('error');
         alert("Cannot create a search without any pickup or delivery location!");
         return;
